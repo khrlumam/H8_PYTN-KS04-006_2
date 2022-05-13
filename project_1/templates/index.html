@@ -18,169 +18,172 @@
 
     <title>Project 1 -  Linear Regression</title>
   </head>
-  <body onload="sembunyikanForm()">
+  <body>
   
 
-  <div class="content">
-    
-    <div class="container">
-
+    <div class="content">
       
-      <div class="row justify-content-center">
-        <div class="col-md-12">
-          
-          <div class="row align-items-center">
-            <div class="col-lg-7 mb-5 mb-lg-0">
+      <div class="container">
 
-              <h2 class="mb-5">Uber vs Lyft <br> Price Prediction.</h2>
-              <!-- Lyft Prediction -->
-              <form action="{{ url_for('predict_1')}}" class="border-right pr-5 mb-5" method="post" id="contactForm" name="contactForm">
-                <div class="row">
-                  <div class="col-md-7 form-group">
-                    <label for="kind">Service Type</label>
-										<select class="form-control" id="kind" name="kind" required="required">
-											<option>Choose a Service Type :</option>
-											<option value="0">Lyft lux</option>
-											<option value="1">Lyft Black XL</option>
-											<option value="2">Lyft Black XL</option>
-											<option value="3">Lyft</option>
-											<option value="4">Lyft XL</option>
-                      <option value="5">Lyft Shared</option>
-										</select>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-7 form-group">
-                    <label for="weather">Weather</label>
-										<select class="form-control" id="weather" name="weather" required="required">
-											<option>Choose a Weather Condition :</option>
-											<option value="0">Clear Day</option>
-											<option value="1">Clear Night</option>
-											<option value="2">Cloudy</option>
-											<option value="3">Foggy</option>
-											<option value="4">Partly Cloudy Day</option>
-											<option value="5">Partly Cloudy Night</option>
-											<option value="6">Rain</option>
-										</select>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-7 form-group">
-                    <label for="distance">Distance</label>
-										<input type="number" name="distance" class="form-control" id="distance"
-											placeholder="Insert Distance Range" min="0" max="256"
-											required="required">
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-8 form-group">
-                    <label for="surge_multiplier">Surge Multiplier Pricing</label>
-										<select class="form-control" id="surge_multiplier" name="surge_multiplier"
-											required="required">
-											<option>Choose a Surge Multiplier Pricing :</option>
-											<option value="1.00">$1.00</option>
-											<option value="1.25">$1.25</option>
-											<option value="1.50">$1.50</option>
-											<option value="1.75">$1.75</option>
-											<option value="2.00">$2.00</option>
-											<option value="2.50">$2.50</option>
-											<option value="3.00">$3.00</option>
-										</select>
-                  </div>
-                </div>
+        
+        <div class="row justify-content-center">
+          <div class="col-md-12">
             
-                {{ prediction_text_1 }}
+            <div class="row align-items-center">
+              <div class="col-lg-7 mb-5 mb-lg-0">
 
-                <div class="row">
-                  <div class="col-md-12">
-                    <div id="success"></div>
-                    <button class="btn btn-primary rounded-0 py-2 px-4" type="submit">Prediksi</button>
-                    <span class="submitting"></span>
+                <h2 class="mb-5">Uber vs Lyft <br> Price Prediction.</h2>
+                <!-- <button class="sim-btn hvr-bounce-to-top" onclick="FormLyft()">Lyft</button>
+                <button class="sim-btn hvr-bounce-to-top" onclick="FormUber()">Uber</button> -->
+                <div class="col-5 button-group filter-button-group text-center">
+                  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                    aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home"
+                      role="tab" aria-controls="v-pills-home" aria-selected="true">
+                      <img src="{{ url_for('static', filename='images/lyft.png') }}"
+                        alt="linear_regression_icon" width="50px"> Lyft</a>
+                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile"
+                      role="tab" aria-controls="v-pills-profile" aria-selected="false">
+                      <img src="{{ url_for('static', filename='images/uber.png') }}"
+                        alt="linear_regression_icon" width="50px"> Uber</a>
                   </div>
                 </div>
-              </form>
+                <!-- Lyft Prediction -->
+                <div class="tab-content" id="v-pills-tabContent">
+                  <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                    aria-labelledby="v-pills-home-tab">
+                    <form action="{{ url_for('predict_1')}}" class="border-right pr-5 mb-5" method="post" id="contactForm_lyft">
+                        <div class="col-md-7 form-group">
+                          <label for="kind">Service Type</label>
+                          <select class="form-control" id="kind" name="kind" required="required">
+                            <option>Choose a Service Type :</option>
+                            <option value="0">Lyft lux</option>
+                            <option value="1">Lyft Black XL</option>
+                            <option value="2">Lyft Black XL</option>
+                            <option value="3">Lyft</option>
+                            <option value="4">Lyft XL</option>
+                            <option value="5">Lyft Shared</option>
+                          </select>
+                        </div>
+                    
+                      
+                        <div class="col-md-7 form-group">
+                          <label for="weather">Weather</label>
+                          <select class="form-control" id="weather" name="weather" required="required">
+                            <option>Choose a Weather Condition :</option>
+                            <option value="0">Clear Day</option>
+                            <option value="1">Clear Night</option>
+                            <option value="2">Cloudy</option>
+                            <option value="3">Foggy</option>
+                            <option value="4">Partly Cloudy Day</option>
+                            <option value="5">Partly Cloudy Night</option>
+                            <option value="6">Rain</option>
+                          </select>
+                        </div>
+                      
 
-              <!-- Uber Prediction -->
-              <form action="{{ url_for('predict_2')}}" class="border-right pr-5 mb-5" method="post" id="contactForm_hide" name="contactForm">
-                <div class="row">
-                  <div class="col-md-7 form-group">
-                    <label for="kind">Service Type</label>
-										<select class="form-control" id="kind" name="kind" required="required">
-											<option>Choose a Service Type :</option>
-                      <option value="0">Uber Lux</option>
-											<option value="1">Uber SUV</option>
-											<option value="2">Uber Taxi</option>
-											<option value="3">Uber Pool</option>
-											<option value="4">Uber X</option>
-											<option value="5">Uber XL</option>
-											<option value="6">Uber WAV</option>
-										</select>
+                    
+                        <div class="col-md-7 form-group">
+                          <label for="distance">Distance</label>
+                          <input type="number" name="distance" class="form-control" id="distance"
+                            placeholder="Insert Distance Range"
+                            required="required">
+                        </div>
+                      
+
+                      
+                        <div class="col-md-8 form-group">
+                          <label for="surge_multiplier">Surge Multiplier Pricing</label>
+                          <select class="form-control" id="surge_multiplier" name="surge_multiplier"
+                            required="required">
+                            <option>Choose a Surge Multiplier Pricing :</option>
+                            <option value="1.00">$1.00</option>
+                            <option value="1.25">$1.25</option>
+                            <option value="1.50">$1.50</option>
+                            <option value="1.75">$1.75</option>
+                            <option value="2.00">$2.00</option>
+                            <option value="2.50">$2.50</option>
+                            <option value="3.00">$3.00</option>
+                          </select>
+                        </div>
+                      <button type="submit" class="btn btn-primary rounded-0 py-2 px-4">Predict</button>
+                    </form>
+                    <p class="message">{{ prediction_text_1 }}</p>
+                  </div>
+                
+                  <!-- Uber Prediction -->
+                  <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" 
+                    aria-labelledby="v-pills-profile-tab">
+                    <form action="{{ url_for('predict_2')}}" class="border-right pr-5 mb-5" method="post" id="contactForm_uber">
+                        <div class="col-md-7 form-group">
+                          <label for="kind">Service Type</label>
+                          <select class="form-control" id="kind" name="kind" required="required">
+                            <option>Choose a Service Type :</option>
+                            <option value="0">Uber Black</option>
+                            <option value="1">Uber Black SUV</option>
+                            <option value="2">Uber Taxi</option>
+                            <option value="3">Uber Pool</option>
+                            <option value="4">Uber X</option>
+                            <option value="5">Uber XL</option>
+                            <option value="6">Uber WAV</option>
+                          </select>
+                        </div>
+                      
+                      
+                        <div class="col-md-7 form-group">
+                          <label for="weather">Weather</label>
+                          <select class="form-control" id="weather" name="weather" required="required">
+                            <option>Choose a Weather Condition :</option>
+                            <option value="0">Clear Day</option>
+                            <option value="1">Clear Night</option>
+                            <option value="2">Cloudy</option>
+                            <option value="3">Foggy</option>
+                            <option value="4">Partly Cloudy Day</option>
+                            <option value="5">Partly Cloudy Night</option>
+                            <option value="6">Rain</option>
+                          </select>
+                        </div>
+                      
+
+                    
+                        <div class="col-md-7 form-group">
+                          <label for="distance">Distance</label>
+                          <input type="number" name="distance" class="form-control" id="distance"
+                            placeholder="Insert Distance Range"
+                            required="required">
+                        </div>
+                      
+
+                      
+                        <div class="col-md-8 form-group">
+                          <label for="surge_multiplier">Surge Multiplier Pricing</label>
+                          <select class="form-control" id="surge_multiplier" name="surge_multiplier"
+                            required="required">
+                            <option>Choose a Surge Multiplier Pricing :</option>
+                            <option value="1.00">$1.00</option>
+                          </select>
+                        </div>
+                      <button type="submit" class="btn btn-primary rounded-0 py-2 px-4">Predict</button>
+                    </form>
+                    <p class="message">{{ prediction_text_2 }}</p>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-md-7 form-group">
-                    <label for="weather">Weather</label>
-										<select class="form-control" id="weather" name="weather" required="required">
-											<option>Choose a Weather Condition :</option>
-                      <option value="0">Clear Day</option>
-											<option value="1">Clear Night</option>
-											<option value="2">Cloudy</option>
-											<option value="3">Foggy</option>
-											<option value="4">Partly Cloudy Day</option>
-											<option value="5">Partly Cloudy Night</option>
-											<option value="6">Rain</option>
-										</select>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-6 form-group">
-                    <label for="distance">Distance</label>
-										<input type="number" name="distance" class="form-control" id="distance"
-											placeholder="Insert Distance Range" min="0" max="256"
-											required="required">
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-8 form-group">
-                    <label for="surge_multiplier">Surge Multiplier Pricing</label>
-										<select class="form-control" id="surge_multiplier" name="surge_multiplier"
-											required="required">
-											<option>Choose a Surge Multiplier Pricing :</option>
-											<option value="1.00">$1.00</option>
-										</select>
-                  </div>
-                </div>
-            
-                {{ prediction_text_2 }}
-
-                <div class="row">
-                  <div class="col-md-12">
-                    <input type="submit" value="Uber Price Prediction" class="btn btn-primary rounded-0 py-2 px-4">
-                    <span class="submitting"></span>
-                  </div>
-                </div>
-              </form>
-
+              </div>
+              <div class="col-lg-4 ml-auto">
+                <h3 class="mb-4">About Dataset  .</h3>
+                <p>This is a very beginner-friendly dataset. It does contain a lot of NA values. It is a good dataset if you want to use a Linear Regression Model to see the pattern between different predectors such as hour and price. 
+                  <br>A really amazing part of this dataset is that I have included the corresponding weather data for that hour with a short summary of the weather. Other important factors are temperature, wind, and sunset.</p>
+                <p><a href="https://www.kaggle.com/datasets/brllrb/uber-and-lyft-dataset-boston-ma/discussion" target="blank">Go to Site</a></p>
+                  <br>
+                <h3 class="mb-4">Nama Kelompok:</h3>
+                <p>Tyra Nabilla - PYTN-KS04-004
+                  <br>Khairul Umam - PYTN-KS04-006 </p>
+              </div>
             </div>
-            <div class="col-lg-4 ml-auto">
-              <h3 class="mb-4">About Dataset  .</h3>
-              <p>This is a very beginner-friendly dataset. It does contain a lot of NA values. It is a good dataset if you want to use a Linear Regression Model to see the pattern between different predectors such as hour and price. 
-                <br>A really amazing part of this dataset is that I have included the corresponding weather data for that hour with a short summary of the weather. Other important factors are temperature, wind, and sunset.</p>
-              <p><a href="https://www.kaggle.com/datasets/brllrb/uber-and-lyft-dataset-boston-ma/discussion" target="blank">Go to Site</a></p>
-                <br>
-              <h3 class="mb-4">Nama Kelompok:</h3>
-              <p>Tyra Nabilla - PYTN-KS04-004
-                <br>Khairul Umam - PYTN-KS04-006 </p>
-            </div>
-          </div>
-        </div>  
+          </div>  
         </div>
       </div>
-  </div>
+    </div>
     
     
 

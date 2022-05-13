@@ -69,8 +69,3 @@ $(function() {
 	contactForm();
 
 });
-
-function sembunyikanForm(){
-	var contactForm_hide = document.getElementById("contactForm_hide");
-	contactForm_hide.style.visibility = "hidden";
-}
