@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/icomoon_style.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <title>Project 4</title>
+  </head>
+  <body>
+  
+
+    <div class="content">
+      
+      <div class="container">
+
+        
+        <div class="row justify-content-center">
+          <div class="col-md-12">
+            
+            <div class="row align-items-center">
+              <div class="col-lg-7 mb-5 mb-lg-0">
+
+                <h2 class="mb-5">Credit Card Dataset <br> for Clustering.</h2>
+                <!-- <button class="sim-btn hvr-bounce-to-top" onclick="FormLyft()">Lyft</button>
+                <button class="sim-btn hvr-bounce-to-top" onclick="FormUber()">Uber</button> -->
+                <div class="col-5 button-group filter-button-group text-center">
+                  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                    aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home"
+                      role="tab" aria-controls="v-pills-home" aria-selected="true">
+                      <img src="https://static.thenounproject.com/png/2424487-200.png"
+                        alt="kmeans_clust" width="20px"> K-Means </a>
+                  </div>
+                </div>
+
+                <!-- K-Means Clustering -->
+                <div class="tab-content" id="v-pills-tabContent">
+                  <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                    aria-labelledby="v-pills-home-tab">
+                    <form action="{{ url_for('predict')}}" class="border-right pr-5 mb-5" method="post" id="contactForm_lyft">
+                        <div class="col-md-7 form-group">
+                          <label for="BALANCE">Balance</label>
+                          <input type="text" name="BALANCE" class="form-control" id="BALANCE"
+                            placeholder="Input Balance Value..."
+                            required="required">
+                        </div>
+                    
+                      
+                        <div class="col-md-7 form-group">
+                          <label for="PURCHASES">Purchases</label>
+                          <input type="text" name="PURCHASES" class="form-control" id="PURCHASES"
+                            placeholder="Input Purchases Value..."
+                            required="required">
+                        </div>
+                      
+
+                        <div class="col-md-7 form-group">
+                          <label for="CASH_ADVANCE">Cash Advance</label>
+                          <input type="text" name="CASH_ADVANCE" class="form-control" id="CASH_ADVANCE"
+                            placeholder="Input Cash Advance Value..."
+                            required="required">
+                        </div>
+
+                        <div class="col-md-7 form-group">
+                          <label for="CREDIT_LIMIT">Credit Limit</label>
+                          <input type="text" name="CREDIT_LIMIT" class="form-control" id="CREDIT_LIMIT"
+                            placeholder="Input Credit Limit Value..."
+                            required="required">
+                        </div>
+
+                        <div class="col-md-7 form-group">
+                          <label for="PAYMENTS">Payments</label>
+                          <input type="text" name="PAYMENTS" class="form-control" id="PAYMENTS"
+                            placeholder="Input Payments Value..."
+                            required="required">
+                        </div>
+
+                        <div class="col-md-7 form-group">
+                          <label for="MINIMUM_PAYMENTS">Minimum Payments</label>
+                          <input type="text" name="MINIMUM_PAYMENTS" class="form-control" id="MINIMUM_PAYMENTS"
+                            placeholder="Input Minimum Payments Value..."
+                            required="required">
+                        </div>
+                      <button type="submit" class="btn btn-primary rounded-0 py-2 px-4">Predict</button>
+                    </form>
+                    <p class="message">{{ prediction_text }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 ml-auto">
+                <h3 class="mb-4">About Dataset  .</h3>
+                <p>This case requires to develop a customer segmentation to define marketing strategy. The
+                  sample Dataset summarizes the usage behavior of about 9000 active credit card holders during the last 6 months. The file is at a customer level with 18 behavioral variables.</p>
+                <p><a href="https://www.kaggle.com/datasets/arjunbhasin2013/ccdata" target="blank">Go to Site</a></p>
+                  <br>
+                <h3 class="mb-4">Nama Kelompok:</h3>
+                <p>Tyra Nabilla - PYTN-KS04-004
+                  <br>Khairul Umam - PYTN-KS04-006 </p>
+              </div>
+                <h3 class="mb-4">Keterangan Cluster.</h3>
+              <p>● Cluster 0 : <br>
+                Cluster ini mempunyai saldo dan credit limit yang besar tetapi termasuk hemat. <br><br>
+          
+             ● Cluster 1 : <br>
+             Cluster pengguna ini, meskipun memiliki jumlah pengguna tertinggi sejauh ini, cukup hemat di bandingkan cluster yang lain. <br><br>
+            
+             ● Cluster 2 : <br>
+             Cluster ini memiliki pembayaran minimum yang sangat tinggi sementara memiliki batas kredit terendah kedua. Sepertinya bank telah mengidentifikasi mereka sebagai risiko yang lebih tinggi. <br><br>
+          
+             ● Cluster 3 : <br>
+             Hal yang paling menonjol pada cluster ini adalah bahwa orang-orang ini memiliki penarikan tunai tertinggi sejauh ini. <br><br>
+          
+             ● Cluster 4 : <br>
+             Cluster pengguna ini secara umum sangat aktif yang bisa dibilang paling ideal. <br><br>
+          
+             ● Cluster 5 : <br>
+             Cluster ini merupakan yang terboros dibanding yang lain dan memiliki banyak outlier.</p>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>
+    
+    
+
+    <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.validate.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>
